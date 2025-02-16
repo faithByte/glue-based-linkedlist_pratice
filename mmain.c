@@ -7,7 +7,7 @@ void	updateNode(_list *list, char c, int n, char c1, int n1){
 
 	current = list->head;
 	while (current){
-		data = (_data *)current;
+		data = (_data *)(current - list->offset);
 		if ((data->c == c) && (data->n == n)){
 			data->c = c1;
 			data->n = n1;
@@ -32,7 +32,6 @@ int	main(){
 		else
 			insertNode(list1, list2, i, i);
 	}
-	
 	printf("\n-----------------------------------------\n");
 	printList(list1);
 	printList(list2);
@@ -41,6 +40,7 @@ int	main(){
 	// i only update in list 1 must be updated in list 2
 	updateNode(list1, 'a', 'a', '=', '=');
 	updateNode(list1, 'A', 'A', '*', '*');
+	updateNode(list2, '[', '[', '?', '?');
 	printList(list1);
 	printList(list2);
 

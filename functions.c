@@ -69,7 +69,7 @@ void	deleteNode(_list *list1, _list *list2, char c, int n){
 
 	current = list1->head;
 	while (current){
-		data = (_data *)current;
+		data = (_data *)(current - list1->offset);
 		if ((data->c == c) && (data->n == n)){
 			popNode(list1, &(data->ptr[0]));
 			popNode(list2, &(data->ptr[1]));
