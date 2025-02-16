@@ -1,4 +1,4 @@
-# Double linked list
+# Glue Based Linked List
 
 A **glued doubly linked list** is essentially a special type of linked list where each node not only connects to the next and previous nodes (like in a regular doubly linked list), but also has an additional "glue" that connects it to another part of the list or even a different list entirely.
 
