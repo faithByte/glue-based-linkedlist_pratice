@@ -1,9 +1,11 @@
 # sudo sysctl -w vm.mmap_rnd_bits=28
 
-all: exec run
+all: run
 
-exec:
-	@gcc -g -fsanitize=address main.c -o GluedDoublyLinkedList
+multi:
+	@gcc -g -fsanitize=address mmain.c functions.c -o MultiGluedDoublyLinkedList
+	@./MultiGluedDoublyLinkedList
 
 run:
+	@gcc -g -fsanitize=address main.c -o GluedDoublyLinkedList
 	@./GluedDoublyLinkedList

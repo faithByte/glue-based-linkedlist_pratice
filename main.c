@@ -2,6 +2,7 @@
 #include "stdlib.h"
 #include "stdbool.h"
 
+//  1 list
 typedef struct node {
 	struct node *previous;
 	struct node *next;
@@ -12,17 +13,17 @@ typedef struct list {
 	_node	*last;
 } _list;
 
-typedef struct type {
+typedef struct data {
 	_node	ptr;
 	char	c;
 	size_t	n;
 	// other stuffs
-} _type;
+} _data;
 
 void	insertNode(_list *list, char c, size_t n){
-	_type	*nodeData;
+	_data	*nodeData;
 
-	nodeData = malloc(sizeof(_type));
+	nodeData = malloc(sizeof(_data));
 	nodeData->c = c;
 	nodeData->n = n;
 	nodeData->ptr.next = NULL;
@@ -38,11 +39,11 @@ void	insertNode(_list *list, char c, size_t n){
 
 void	removeNode(_list *list, char c, int n){
 	_node	*current;
-	_type	*data;
+	_data	*data;
 
 	current = list->head;
 	while (current){
-		data = (_type *)current;
+		data = (_data *)current;
 		if ((data->c == c) && (data->n == n)){
 			if (current == list->head){
 				list->head = current->next;
@@ -63,16 +64,16 @@ void	removeNode(_list *list, char c, int n){
 		}
 		current = current->next;
 	}
-	
+
 }
 
 void	printList(_list *list){
 	_node *current;
-	_type *ptr;
+	_data *ptr;
 
 	current = list->head;
 	while (current){
-		ptr = (_type *)current;
+		ptr = (_data *)current;
 		// printf("%ld:%c, ", ptr->n, ptr->c);
 		printf("%c", ptr->c);
 		current = current->next;
@@ -83,11 +84,11 @@ void	printList(_list *list){
 
 void	freeList(_list *list){
 	_node *current;
-	_type *ptr;
+	_data *ptr;
 
 	current = list->head;
 	while (current){
-		ptr = (_type *)current;
+		ptr = (_data *)current;
 		current = current->next;
 		free(ptr);
 	}
@@ -108,13 +109,18 @@ int	main(){
 	for (int i = 'A'; i <= 'z'; i++)
 		insertNode(list, i, i);
 	printList(list);
+
 	removeNode(list, 'a', 'a');
 	printList(list);
+
 	removeNode(list, '[', '[');
 	printList(list);
+
 	removeNode(list, 'A', 'A');
 	printList(list);
+
 	removeNode(list, 'z', 'z');
 	printList(list);
+
 	freeList(list);
 }
