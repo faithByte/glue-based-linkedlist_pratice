@@ -16,7 +16,7 @@ typedef struct list {
 } _list;
 
 typedef struct data {
-	_node	ptr[2];		// ptr[n] n is the number of lists
+	_node	ptr[2];		// ptr[n] n is the number of lists  // we can use *ptr to make it dynamic to each node
 	// the data stored in the list
 	char	c;
 	size_t	n;
